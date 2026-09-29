@@ -18,10 +18,7 @@ export function Gallery({
   return (
     <ul className={cn("grid gap-4 sm:grid-cols-2 lg:grid-cols-3", className)}>
       {items.map((item, index) => (
-        <li
-          key={index}
-          className="surface-panel overflow-hidden rounded-xl"
-        >
+        <li key={index} className="surface-panel overflow-hidden rounded-xl">
           <div className="aspect-[4/3] bg-secondary">
             {item.src ? (
               <img

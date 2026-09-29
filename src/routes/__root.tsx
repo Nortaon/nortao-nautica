@@ -13,6 +13,8 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { NauticalJourney } from "@/components/nautical/NauticalJourney";
+import { PageTransition } from "@/components/PageTransition";
 import { WhatsAppFloating } from "@/components/WhatsAppButton";
 import { siteConfig } from "@/config/siteConfig";
 
@@ -48,7 +50,9 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   return (
     <div className="flex min-h-[70vh] items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="font-display text-2xl text-foreground">Não foi possível carregar a página</h1>
+        <h1 className="font-display text-2xl text-foreground">
+          Não foi possível carregar a página
+        </h1>
         <p className="mt-2 text-sm text-muted-foreground">
           Algo deu errado do nosso lado. Tente novamente ou volte ao início.
         </p>
@@ -127,8 +131,11 @@ function RootComponent() {
         <Navbar />
         <main className="flex-1">
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-          <Outlet />
+          <PageTransition>
+            <Outlet />
+          </PageTransition>
         </main>
+        <NauticalJourney />
         <Footer />
         <WhatsAppFloating />
       </div>

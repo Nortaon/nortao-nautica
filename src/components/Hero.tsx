@@ -43,10 +43,7 @@ export function Hero({
           className="absolute inset-0 -z-20 h-full w-full object-cover"
         />
       ) : null}
-      <div
-        className="absolute inset-0 -z-10 bg-[image:var(--gradient-hero)]"
-        aria-hidden="true"
-      />
+      <div className="absolute inset-0 -z-10 bg-[image:var(--gradient-hero)]" aria-hidden="true" />
 
       <div
         className={cn(

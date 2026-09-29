@@ -56,10 +56,7 @@ export const navLinks = [
   { label: "Contato", to: "/contato" },
 ] as const;
 
-export const footerLinks = [
-  ...navLinks,
-  { label: "Diferenciais", to: "/diferenciais" },
-] as const;
+export const footerLinks = [...navLinks, { label: "Diferenciais", to: "/diferenciais" }] as const;
 
 export type Course = {
   slug: string;

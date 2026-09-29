@@ -11,11 +11,28 @@ export function Logo({ compact = false }: { compact?: boolean }) {
   return (
     <Link to="/" className="group inline-flex items-center gap-3" aria-label={siteConfig.name}>
       <span className="relative inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-primary/40 bg-secondary text-primary transition-all duration-300 group-hover:border-primary group-hover:shadow-[var(--shadow-gold)]">
-        <svg viewBox="0 0 40 40" className="h-7 w-7 transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:rotate-3" fill="none" aria-hidden="true">
-          <path d="M13 17c3-4 7-5 11-4l5 7-8 1-5-4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        <svg
+          viewBox="0 0 40 40"
+          className="h-7 w-7 transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:rotate-3"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M13 17c3-4 7-5 11-4l5 7-8 1-5-4-4 4"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
           <circle cx="21" cy="10" r="2.5" fill="currentColor" />
           <path d="M10 22h19l5 3-5 6H16c-5 0-8-2-10-5l4-4Z" fill="currentColor" />
-          <path d="M5 34c6-3 10 3 16 0s10 3 15 0" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" className="transition-transform duration-500 group-hover:translate-x-1" />
+          <path
+            d="M5 34c6-3 10 3 16 0s10 3 15 0"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            className="transition-transform duration-500 group-hover:translate-x-1"
+          />
         </svg>
       </span>
       <span className="leading-none">
@@ -62,7 +79,12 @@ export function Navbar() {
           <WhatsAppButton className="hidden sm:inline-flex" variant="hero" />
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
-              <Button variant="outlineGold" size="icon" className="xl:hidden" aria-label="Abrir menu">
+              <Button
+                variant="outlineGold"
+                size="icon"
+                className="xl:hidden"
+                aria-label="Abrir menu"
+              >
                 <Menu aria-hidden="true" />
               </Button>
             </SheetTrigger>

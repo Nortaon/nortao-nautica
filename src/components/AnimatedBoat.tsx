@@ -1,34 +1,34 @@
-import { useEffect, useState } from "react";
-import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "motion/react";
+import { motion, useScroll, useSpring, useTransform } from "motion/react";
+import type { ComponentType } from "react";
 
+import { JetSkiVisual } from "@/components/nautical/JetSkiVisual";
+import type { NauticalVisualProps } from "@/components/nautical/types";
+import { WakeTrail } from "@/components/nautical/WakeTrail";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import { cn } from "@/lib/utils";
 
-/**
- * AnimatedBoat
- *
- * Arquitetura:
- * - `useScroll` (progresso global da página) alimenta um `useSpring`, que suaviza o valor.
- * - `useTransform` deriva: posição horizontal (parallax), leve balanço vertical e inclinação.
- * - Nenhum listener de scroll manual: tudo roda em valores de motion (sem re-render por frame).
- * - `prefers-reduced-motion` desliga o movimento e mantém apenas o barco estático.
- * - A animação vive isolada neste componente; as páginas apenas o posicionam.
- */
-export function AnimatedBoat({ className }: { className?: string }) {
+type AnimatedBoatProps = {
+  className?: string;
+  mode?: "home" | "ambient";
+  journeyKey?: string;
+  Visual?: ComponentType<NauticalVisualProps>;
+};
+
+/** Controls nautical movement independently from the rendered vessel artwork. */
+export function AnimatedBoat({
+  className,
+  mode = "home",
+  journeyKey,
+  Visual = JetSkiVisual,
+}: AnimatedBoatProps) {
   const reducedMotion = usePrefersReducedMotion();
-  const motionReduced = useReducedMotion();
-  const [mounted, setMounted] = useState(false);
   const { scrollYProgress } = useScroll();
-
-  const progress = useSpring(scrollYProgress, { stiffness: 60, damping: 24, mass: 0.6 });
-  const x = useTransform(progress, [0, 1], ["-8rem", "calc(100vw - 4rem)"]);
-  const y = useTransform(progress, [0, 0.25, 0.5, 0.75, 1], [0, -8, 4, -6, 0]);
-  const rotate = useTransform(progress, [0, 0.25, 0.5, 0.75, 1], [-1.5, 1.2, -1, 1.4, -0.6]);
-  const wake = useTransform(progress, [0, 0.08, 1], [0.2, 0.65, 0.8]);
-
-  useEffect(() => setMounted(true), []);
-
-  const still = reducedMotion || motionReduced || !mounted;
+  const progress = useSpring(scrollYProgress, { stiffness: 58, damping: 25, mass: 0.65 });
+  const homeX = useTransform(progress, [0, 1], ["-8rem", "calc(100vw - 4rem)"]);
+  const homeY = useTransform(progress, [0, 0.25, 0.5, 0.75, 1], [0, -8, 4, -6, 0]);
+  const homeRotate = useTransform(progress, [0, 0.25, 0.5, 0.75, 1], [-1.5, 1.2, -1, 1.4, -0.6]);
+  const wakeOpacity = useTransform(progress, [0, 0.08, 1], [0.18, 0.58, 0.72]);
+  const isHome = mode === "home";
 
   return (
     <div
@@ -36,60 +36,33 @@ export function AnimatedBoat({ className }: { className?: string }) {
       className={cn("pointer-events-none absolute inset-x-0 select-none", className)}
     >
       <motion.div
-        className="relative w-28 drop-shadow-[0_8px_18px_color-mix(in_oklab,var(--navy-deep)_70%,transparent)] sm:w-36"
-        style={still ? { x: "12%" } : { x, y, rotate }}
+        key={journeyKey}
+        className={cn(
+          "relative w-20 will-change-transform drop-shadow-[0_8px_18px_color-mix(in_oklab,var(--navy-deep)_70%,transparent)] sm:w-28 lg:w-36",
+          !isHome && "ml-auto mr-3 sm:mr-8",
+        )}
+        style={isHome && !reducedMotion ? { x: homeX, y: homeY, rotate: homeRotate } : {}}
+        {...(!isHome && !reducedMotion
+          ? {
+              initial: { x: 34, y: 5, opacity: 0 },
+              animate: { x: 0, y: [0, -3, 0], opacity: 0.52 },
+              transition: {
+                x: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as const },
+                opacity: { duration: 0.45 },
+                y: { duration: 4.8, repeat: Infinity, ease: "easeInOut" as const },
+              },
+            }
+          : { initial: false, animate: { opacity: isHome ? 0.68 : 0.38 } })}
       >
         <motion.div
-          className="absolute top-[58%] right-[72%] w-28 sm:w-40"
-          style={still ? { opacity: 0.35 } : { opacity: wake }}
+          className="absolute top-[58%] right-[72%] w-20 sm:w-28 lg:w-40"
+          style={isHome && !reducedMotion ? { opacity: wakeOpacity } : {}}
         >
-          <WaveTrail />
+          <WakeTrail isStatic={reducedMotion} />
         </motion.div>
-        <JetSkiMark still={still} />
+        <Visual isStatic={reducedMotion || !isHome} />
       </motion.div>
     </div>
-  );
-}
-
-function JetSkiMark({ still }: { still: boolean }) {
-  return (
-    <motion.svg
-      viewBox="0 0 140 72"
-      className="w-full text-primary"
-      fill="none"
-      role="presentation"
-      {...(!still
-        ? {
-            animate: { y: [0, -3, 1, 0], rotate: [0, 1.5, -0.7, 0] },
-            transition: { duration: 2.1, repeat: Infinity, ease: "easeInOut" as const },
-          }
-        : {})}
-    >
-      <path d="M45 25c7-8 17-12 29-11l13 1 10 17-17 2-12-9-15 8" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-      <circle cx="68" cy="12" r="7" fill="currentColor" />
-      <path d="M49 34h58l18 9-12 12c-4 4-9 6-15 6H43c-9 0-17-4-23-10l-5-6 29-3 5-8Z" fill="currentColor" />
-      <path d="M80 34h29l10 8-35 1-4-9Z" fill="currentColor" opacity="0.55" />
-      <path d="M26 59c19 7 62 8 91 0" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" opacity="0.7" />
-    </motion.svg>
-  );
-}
-
-function WaveTrail() {
-  return (
-    <svg viewBox="0 0 180 46" className="w-full text-primary" fill="none" role="presentation">
-      {[0, 12, 24].map((offset, index) => (
-        <motion.path
-          key={offset}
-          d={`M4 ${8 + offset}c18-9 34 9 52 0s34-9 52 0 34 9 52 0`}
-          stroke="currentColor"
-          strokeWidth={index === 0 ? 3 : 2}
-          strokeLinecap="round"
-          opacity={0.75 - index * 0.18}
-          animate={{ pathLength: [0.35, 1, 0.35], opacity: [0.2, 0.8, 0.2] }}
-          transition={{ duration: 1.8, repeat: Infinity, delay: index * 0.2, ease: "easeInOut" }}
-        />
-      ))}
-    </svg>
   );
 }
 

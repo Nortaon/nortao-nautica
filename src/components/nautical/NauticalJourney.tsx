@@ -1,0 +1,25 @@
+import { useLocation } from "@tanstack/react-router";
+
+import { AnimatedBoat } from "@/components/AnimatedBoat";
+
+/** Persistent decorative layer that stays mounted while route content changes. */
+export function NauticalJourney() {
+  const pathname = useLocation({ select: (location) => location.pathname });
+  const isHome = pathname === "/";
+
+  return (
+    <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-20 overflow-hidden">
+      <AnimatedBoat
+        mode={isHome ? "home" : "ambient"}
+        journeyKey={pathname}
+        className={
+          isHome
+            ? "top-[52%] hidden -translate-y-1/2 opacity-70 md:block"
+            : "top-28 opacity-45 sm:top-32 sm:opacity-55"
+        }
+      />
+    </div>
+  );
+}
+
+export default NauticalJourney;
