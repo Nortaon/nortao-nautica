@@ -174,7 +174,11 @@ function Index() {
         />
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
           {courses.map((course, index) => (
-            <CourseCard key={course.slug} course={course} image={courseImages[index] ?? heroImage} />
+            <CourseCard
+              key={course.slug}
+              course={course}
+              image={courseImages[index] ?? heroImage}
+            />
           ))}
         </div>
         <div className="mt-10 rounded-xl border border-border bg-card/40 p-6 sm:p-8">

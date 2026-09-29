@@ -46,7 +46,11 @@ function CursosPage() {
       <Section>
         <div className="grid gap-6 lg:grid-cols-3">
           {courses.map((course, index) => (
-            <CourseCard key={course.slug} course={course} image={courseImages[index] ?? heroImage} />
+            <CourseCard
+              key={course.slug}
+              course={course}
+              image={courseImages[index] ?? heroImage}
+            />
           ))}
         </div>
         <p className="mt-8 rounded-xl border border-border bg-card/50 p-6 text-sm leading-relaxed text-foreground/80">
