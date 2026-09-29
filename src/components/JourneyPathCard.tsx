@@ -1,6 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
-import type { ComponentType } from "react";
+import { ArrowUpRight, type LucideIcon } from "lucide-react";
 
 type JourneyPathCardProps = {
   title: string;
@@ -8,7 +7,7 @@ type JourneyPathCardProps = {
   to: "/cursos" | "/servicos" | "/embarcacoes" | "/casas-flutuantes";
   image: string;
   imageAlt: string;
-  icon: ComponentType<{ className?: string; "aria-hidden"?: boolean }>;
+  icon: LucideIcon;
 };
 
 export function JourneyPathCard({
@@ -29,7 +28,7 @@ export function JourneyPathCard({
         height={720}
         className="absolute inset-0 h-full w-full object-cover opacity-40 transition-transform duration-700 group-hover:scale-105"
       />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_0%,var(--navy-deep)_88%)]" />
+      <div className="journey-card-overlay absolute inset-0" />
       <div className="relative flex min-h-72 flex-col justify-end p-6">
         <Icon className="mb-4 h-7 w-7 text-primary" aria-hidden="true" />
         <h3 className="font-display text-2xl leading-tight text-foreground">{title}</h3>
