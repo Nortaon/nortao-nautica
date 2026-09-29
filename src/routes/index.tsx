@@ -4,7 +4,6 @@ import heroImage from "@/assets/hero-river.jpg";
 import cursoImage from "@/assets/cursos-lancha-jetski.jpg";
 import jetskiImage from "@/assets/jetski-rio.jpg";
 import casaImage from "@/assets/casa-flutuante.jpg";
-import { AnimatedBoat } from "@/components/AnimatedBoat";
 import { CTASection } from "@/components/CTASection";
 import { CourseCard } from "@/components/CourseCard";
 import { DifferentialCard } from "@/components/DifferentialCard";
@@ -69,11 +68,6 @@ function Index() {
           </>
         }
       />
-
-      {/* Jet ski animado acompanha a navegação da página */}
-      <div className="pointer-events-none fixed inset-x-0 top-1/2 z-10 hidden -translate-y-1/2 opacity-70 md:block">
-        <AnimatedBoat />
-      </div>
 
       <Section id="cursos">
         <SectionTitle

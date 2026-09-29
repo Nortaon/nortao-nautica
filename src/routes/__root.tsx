@@ -13,6 +13,8 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { NauticalJourney } from "@/components/nautical/NauticalJourney";
+import { PageTransition } from "@/components/PageTransition";
 import { WhatsAppFloating } from "@/components/WhatsAppButton";
 import { siteConfig } from "@/config/siteConfig";
 
@@ -127,8 +129,11 @@ function RootComponent() {
         <Navbar />
         <main className="flex-1">
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-          <Outlet />
+          <PageTransition>
+            <Outlet />
+          </PageTransition>
         </main>
+        <NauticalJourney />
         <Footer />
         <WhatsAppFloating />
       </div>

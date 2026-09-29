@@ -185,6 +185,17 @@
   );
 }
 
+@utility route-wave {
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, var(--silver) 45%, transparent),
+    color-mix(in oklab, var(--gold) 60%, transparent),
+    transparent
+  );
+  box-shadow: 0 5px 18px color-mix(in oklab, var(--gold) 18%, transparent);
+}
+
 @utility eyebrow {
   font-family: var(--font-sans);
   font-size: 0.72rem;
@@ -197,5 +208,9 @@
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .route-wave {
+    display: none;
   }
 }
