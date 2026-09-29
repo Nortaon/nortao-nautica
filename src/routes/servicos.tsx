@@ -32,8 +32,8 @@ function ServicosPage() {
         size="compact"
         eyebrow="Serviços"
         image={docsImage}
-        title="Documentação, projetos e soluções náuticas"
-        subtitle="Conduzimos processos e orientamos proprietários para que a navegação aconteça de forma segura e regular."
+        title="Regularização, renovação e soluções náuticas"
+        subtitle="Conduzimos processos e orientamos proprietários para manter a documentação da embarcação em dia e avançar em seus projetos."
       />
 
       <Section>

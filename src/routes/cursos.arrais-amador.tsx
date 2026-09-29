@@ -7,7 +7,7 @@ import { Hero } from "@/components/Hero";
 import { Section } from "@/components/Section";
 import { SectionTitle } from "@/components/SectionTitle";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
-import { courses, differentials, siteConfig } from "@/config/siteConfig";
+import { courseExamInfo, courses, differentials, siteConfig } from "@/config/siteConfig";
 
 const course = courses[0] ?? {
   slug: "arrais-amador",
@@ -15,6 +15,8 @@ const course = courses[0] ?? {
   title: "Arrais-Amador",
   shortTitle: "Arrais-Amador",
   description: "Habilitação para conduzir embarcações de esporte e recreio em águas interiores.",
+  audience: "Para quem quer conduzir embarcações em águas interiores.",
+  objective: "Preparação para a jornada de habilitação.",
   benefits: [],
 };
 const title = `Curso Arrais-Amador — ${siteConfig.name}`;
@@ -27,6 +29,8 @@ export const Route = createFileRoute("/cursos/arrais-amador")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: ArraisPage,
@@ -66,6 +70,9 @@ function ArraisPage() {
             ))}
           </ul>
         </div>
+        <p className="mt-10 border-l border-primary/50 pl-5 text-sm leading-relaxed text-muted-foreground">
+          {courseExamInfo}
+        </p>
       </Section>
 
       <Section tone="deep">
