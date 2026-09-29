@@ -1,13 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  Anchor,
-  ArrowRight,
-  Compass,
-  FileCheck2,
-  House,
-  MapPin,
-  Wrench,
-} from "lucide-react";
+import { Anchor, ArrowRight, Compass, FileCheck2, House, MapPin, Wrench } from "lucide-react";
 
 import casaImage from "@/assets/casa-flutuante.jpg";
 import cursoImage from "@/assets/cursos-lancha-jetski.jpg";
@@ -36,8 +28,7 @@ import {
   siteConfig,
 } from "@/config/siteConfig";
 
-const title =
-  "Nortão Náutica | Cursos e soluções náuticas em Sinop-MT e Colíder-MT";
+const title = "Nortão Náutica | Cursos e soluções náuticas em Sinop-MT e Colíder-MT";
 const description =
   "Cursos de Motonauta, Arrais-Amador e Mestre Amador, regularização e documentação, serviços para embarcações e casas flutuantes em Sinop-MT e Colíder-MT.";
 
@@ -228,8 +219,8 @@ function Index() {
               Sua embarcação em dia, com orientação em cada etapa.
             </h2>
             <p className="mt-5 leading-relaxed text-muted-foreground">
-              Regularização, renovação e orientação documental para sua embarcação. A Nortão
-              conduz os processos já atendidos pela equipe e ajuda você a entender o próximo passo.
+              Regularização, renovação e orientação documental para sua embarcação. A Nortão conduz
+              os processos já atendidos pela equipe e ajuda você a entender o próximo passo.
             </p>
             <ul className="mt-6 grid gap-2 text-sm text-foreground/80 sm:grid-cols-2">
               {services[0]?.highlights.map((item) => (

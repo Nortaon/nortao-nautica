@@ -20,6 +20,7 @@ import { Route as ServicosRouteImport } from './routes/servicos'
 import { Route as SobreRouteImport } from './routes/sobre'
 import { Route as CursosIndexRouteImport } from './routes/cursos.index'
 import { Route as CursosArraisAmadorRouteImport } from './routes/cursos.arrais-amador'
+import { Route as CursosMestreAmadorRouteImport } from './routes/cursos.mestre-amador'
 import { Route as CursosMotonautaRouteImport } from './routes/cursos.motonauta'
 
 const IndexRoute = IndexRouteImport.update({
@@ -77,6 +78,11 @@ const CursosArraisAmadorRoute = CursosArraisAmadorRouteImport.update({
   path: '/arrais-amador',
   getParentRoute: () => CursosRoute,
 } as any)
+const CursosMestreAmadorRoute = CursosMestreAmadorRouteImport.update({
+  id: '/mestre-amador',
+  path: '/mestre-amador',
+  getParentRoute: () => CursosRoute,
+} as any)
 const CursosMotonautaRoute = CursosMotonautaRouteImport.update({
   id: '/motonauta',
   path: '/motonauta',
@@ -94,6 +100,7 @@ export interface FileRoutesByFullPath {
   '/servicos': typeof ServicosRoute
   '/sobre': typeof SobreRoute
   '/cursos/arrais-amador': typeof CursosArraisAmadorRoute
+  '/cursos/mestre-amador': typeof CursosMestreAmadorRoute
   '/cursos/motonauta': typeof CursosMotonautaRoute
   '/cursos/': typeof CursosIndexRoute
 }
@@ -107,6 +114,7 @@ export interface FileRoutesByTo {
   '/servicos': typeof ServicosRoute
   '/sobre': typeof SobreRoute
   '/cursos/arrais-amador': typeof CursosArraisAmadorRoute
+  '/cursos/mestre-amador': typeof CursosMestreAmadorRoute
   '/cursos/motonauta': typeof CursosMotonautaRoute
   '/cursos': typeof CursosIndexRoute
 }
@@ -122,6 +130,7 @@ export interface FileRoutesById {
   '/servicos': typeof ServicosRoute
   '/sobre': typeof SobreRoute
   '/cursos/arrais-amador': typeof CursosArraisAmadorRoute
+  '/cursos/mestre-amador': typeof CursosMestreAmadorRoute
   '/cursos/motonauta': typeof CursosMotonautaRoute
   '/cursos/': typeof CursosIndexRoute
 }
@@ -138,6 +147,7 @@ export interface FileRouteTypes {
     | '/servicos'
     | '/sobre'
     | '/cursos/arrais-amador'
+    | '/cursos/mestre-amador'
     | '/cursos/motonauta'
     | '/cursos/'
   fileRoutesByTo: FileRoutesByTo
@@ -151,6 +161,7 @@ export interface FileRouteTypes {
     | '/servicos'
     | '/sobre'
     | '/cursos/arrais-amador'
+    | '/cursos/mestre-amador'
     | '/cursos/motonauta'
     | '/cursos'
   id:
@@ -165,6 +176,7 @@ export interface FileRouteTypes {
     | '/servicos'
     | '/sobre'
     | '/cursos/arrais-amador'
+    | '/cursos/mestre-amador'
     | '/cursos/motonauta'
     | '/cursos/'
   fileRoutesById: FileRoutesById
@@ -260,6 +272,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CursosArraisAmadorRouteImport
       parentRoute: typeof CursosRoute
     }
+    '/cursos/mestre-amador': {
+      id: '/cursos/mestre-amador'
+      path: '/mestre-amador'
+      fullPath: '/cursos/mestre-amador'
+      preLoaderRoute: typeof CursosMestreAmadorRouteImport
+      parentRoute: typeof CursosRoute
+    }
     '/cursos/motonauta': {
       id: '/cursos/motonauta'
       path: '/motonauta'
@@ -272,12 +291,14 @@ declare module '@tanstack/react-router' {
 
 interface CursosRouteChildren {
   CursosArraisAmadorRoute: typeof CursosArraisAmadorRoute
+  CursosMestreAmadorRoute: typeof CursosMestreAmadorRoute
   CursosMotonautaRoute: typeof CursosMotonautaRoute
   CursosIndexRoute: typeof CursosIndexRoute
 }
 
 const CursosRouteChildren: CursosRouteChildren = {
   CursosArraisAmadorRoute: CursosArraisAmadorRoute,
+  CursosMestreAmadorRoute: CursosMestreAmadorRoute,
   CursosMotonautaRoute: CursosMotonautaRoute,
   CursosIndexRoute: CursosIndexRoute,
 }

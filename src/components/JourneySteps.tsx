@@ -3,7 +3,13 @@ type JourneyStep = {
   description?: string;
 };
 
-export function JourneySteps({ steps, compact = false }: { steps: JourneyStep[]; compact?: boolean }) {
+export function JourneySteps({
+  steps,
+  compact = false,
+}: {
+  steps: JourneyStep[];
+  compact?: boolean;
+}) {
   return (
     <ol
       className={
