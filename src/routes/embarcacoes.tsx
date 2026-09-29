@@ -8,7 +8,13 @@ import { Section } from "@/components/Section";
 import { SectionTitle } from "@/components/SectionTitle";
 import { services, siteConfig } from "@/config/siteConfig";
 
-const service = services[1];
+const service = services[1] ?? {
+  slug: "embarcacoes",
+  title: "Serviços para embarcações",
+  description: "Suporte técnico e administrativo para proprietários de embarcações.",
+  to: "/embarcacoes",
+  highlights: [],
+};
 const title = `Serviços para embarcações — ${siteConfig.name}`;
 const description =
   "Suporte técnico e administrativo para proprietários de embarcações em Sinop-MT e região: orientação, acompanhamento e regularização.";

@@ -9,7 +9,14 @@ import { SectionTitle } from "@/components/SectionTitle";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { courses, differentials, siteConfig } from "@/config/siteConfig";
 
-const course = courses[0];
+const course = courses[0] ?? {
+  slug: "arrais-amador",
+  to: "/cursos/arrais-amador",
+  title: "Arrais-Amador",
+  shortTitle: "Arrais-Amador",
+  description: "Habilitação para conduzir embarcações de esporte e recreio em águas interiores.",
+  benefits: [],
+};
 const title = `Curso Arrais-Amador — ${siteConfig.name}`;
 const description = course.description;
 

@@ -58,8 +58,12 @@ function JetSkiMark({ still }: { still: boolean }) {
       className="w-full text-primary"
       fill="none"
       role="presentation"
-      animate={still ? undefined : { y: [0, -3, 1, 0], rotate: [0, 1.5, -0.7, 0] }}
-      transition={{ duration: 2.1, repeat: Infinity, ease: "easeInOut" }}
+      {...(!still
+        ? {
+            animate: { y: [0, -3, 1, 0], rotate: [0, 1.5, -0.7, 0] },
+            transition: { duration: 2.1, repeat: Infinity, ease: "easeInOut" as const },
+          }
+        : {})}
     >
       <path d="M45 25c7-8 17-12 29-11l13 1 10 17-17 2-12-9-15 8" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
       <circle cx="68" cy="12" r="7" fill="currentColor" />
