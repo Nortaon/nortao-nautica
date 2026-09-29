@@ -15,14 +15,7 @@ import { SectionTitle } from "@/components/SectionTitle";
 import { ServiceCard } from "@/components/ServiceCard";
 import { Button } from "@/components/ui/button";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
-import {
-  courses,
-  differentials,
-  faq,
-  resources,
-  services,
-  siteConfig,
-} from "@/config/siteConfig";
+import { courses, differentials, faq, resources, services, siteConfig } from "@/config/siteConfig";
 
 const title = `${siteConfig.name} — Do documento à navegação`;
 const description = siteConfig.description;

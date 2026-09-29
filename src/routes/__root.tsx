@@ -50,7 +50,9 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   return (
     <div className="flex min-h-[70vh] items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="font-display text-2xl text-foreground">Não foi possível carregar a página</h1>
+        <h1 className="font-display text-2xl text-foreground">
+          Não foi possível carregar a página
+        </h1>
         <p className="mt-2 text-sm text-muted-foreground">
           Algo deu errado do nosso lado. Tente novamente ou volte ao início.
         </p>
