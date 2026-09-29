@@ -10,12 +10,12 @@ export function NauticalJourney() {
   return (
     <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-20 overflow-hidden">
       <AnimatedBoat
-        key={isHome ? "home-journey" : pathname}
         mode={isHome ? "home" : "ambient"}
+        journeyKey={pathname}
         className={
           isHome
             ? "top-[52%] hidden -translate-y-1/2 opacity-70 md:block"
-            : "bottom-24 opacity-60 sm:bottom-20"
+            : "top-28 opacity-45 sm:top-32 sm:opacity-55"
         }
       />
     </div>

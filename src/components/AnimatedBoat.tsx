@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 type AnimatedBoatProps = {
   className?: string;
   mode?: "home" | "ambient";
+  journeyKey?: string;
   Visual?: ComponentType<NauticalVisualProps>;
 };
 
@@ -17,6 +18,7 @@ type AnimatedBoatProps = {
 export function AnimatedBoat({
   className,
   mode = "home",
+  journeyKey,
   Visual = JetSkiVisual,
 }: AnimatedBoatProps) {
   const reducedMotion = usePrefersReducedMotion();
@@ -34,6 +36,7 @@ export function AnimatedBoat({
       className={cn("pointer-events-none absolute inset-x-0 select-none", className)}
     >
       <motion.div
+        key={journeyKey}
         className={cn(
           "relative w-20 will-change-transform drop-shadow-[0_8px_18px_color-mix(in_oklab,var(--navy-deep)_70%,transparent)] sm:w-28 lg:w-36",
           !isHome && "ml-auto mr-3 sm:mr-8",
