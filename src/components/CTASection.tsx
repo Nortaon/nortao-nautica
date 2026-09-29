@@ -20,7 +20,12 @@ export function CTASection({
         <h2 className="font-display text-3xl leading-tight text-foreground sm:text-5xl">{title}</h2>
         <p className="mx-auto mt-5 max-w-xl text-muted-foreground">{description}</p>
         <div className="mt-9 flex justify-center">
-          <WhatsAppButton label={buttonLabel} variant="hero" size="xl" message={message} />
+          <WhatsAppButton
+            label={buttonLabel}
+            variant="hero"
+            size="xl"
+            {...(message ? { message } : {})}
+          />
         </div>
       </div>
     </section>

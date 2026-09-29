@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import cursoImage from "@/assets/curso-nautico.jpg";
+import cursoImage from "@/assets/jetski-rio.jpg";
 import { CTASection } from "@/components/CTASection";
 import { DifferentialCard } from "@/components/DifferentialCard";
 import { Hero } from "@/components/Hero";
@@ -9,7 +9,14 @@ import { SectionTitle } from "@/components/SectionTitle";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { courses, differentials, siteConfig } from "@/config/siteConfig";
 
-const course = courses[1];
+const course = courses[1] ?? {
+  slug: "motonauta",
+  to: "/cursos/motonauta",
+  title: "Motonauta",
+  shortTitle: "Motonauta",
+  description: "Habilitação para conduzir motos aquáticas com segurança.",
+  benefits: [],
+};
 const title = `Curso Motonauta — ${siteConfig.name}`;
 const description = course.description;
 
