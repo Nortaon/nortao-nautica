@@ -10,7 +10,13 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CasasFlutuantesRouteImport } from './routes/casas-flutuantes'
+import { Route as ContatoRouteImport } from './routes/contato'
+import { Route as ConteudosRouteImport } from './routes/conteudos'
 import { Route as CursosRouteImport } from './routes/cursos'
+import { Route as DiferenciaisRouteImport } from './routes/diferenciais'
+import { Route as EmbarcacoesRouteImport } from './routes/embarcacoes'
+import { Route as ServicosRouteImport } from './routes/servicos'
 import { Route as SobreRouteImport } from './routes/sobre'
 import { Route as CursosIndexRouteImport } from './routes/cursos.index'
 import { Route as CursosArraisAmadorRouteImport } from './routes/cursos.arrais-amador'
@@ -21,9 +27,39 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CasasFlutuantesRoute = CasasFlutuantesRouteImport.update({
+  id: '/casas-flutuantes',
+  path: '/casas-flutuantes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContatoRoute = ContatoRouteImport.update({
+  id: '/contato',
+  path: '/contato',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConteudosRoute = ConteudosRouteImport.update({
+  id: '/conteudos',
+  path: '/conteudos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CursosRoute = CursosRouteImport.update({
   id: '/cursos',
   path: '/cursos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiferenciaisRoute = DiferenciaisRouteImport.update({
+  id: '/diferenciais',
+  path: '/diferenciais',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmbarcacoesRoute = EmbarcacoesRouteImport.update({
+  id: '/embarcacoes',
+  path: '/embarcacoes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicosRoute = ServicosRouteImport.update({
+  id: '/servicos',
+  path: '/servicos',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SobreRoute = SobreRouteImport.update({
@@ -49,7 +85,13 @@ const CursosMotonautaRoute = CursosMotonautaRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/casas-flutuantes': typeof CasasFlutuantesRoute
+  '/contato': typeof ContatoRoute
+  '/conteudos': typeof ConteudosRoute
   '/cursos': typeof CursosRouteWithChildren
+  '/diferenciais': typeof DiferenciaisRoute
+  '/embarcacoes': typeof EmbarcacoesRoute
+  '/servicos': typeof ServicosRoute
   '/sobre': typeof SobreRoute
   '/cursos/arrais-amador': typeof CursosArraisAmadorRoute
   '/cursos/motonauta': typeof CursosMotonautaRoute
@@ -57,6 +99,12 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/casas-flutuantes': typeof CasasFlutuantesRoute
+  '/contato': typeof ContatoRoute
+  '/conteudos': typeof ConteudosRoute
+  '/diferenciais': typeof DiferenciaisRoute
+  '/embarcacoes': typeof EmbarcacoesRoute
+  '/servicos': typeof ServicosRoute
   '/sobre': typeof SobreRoute
   '/cursos/arrais-amador': typeof CursosArraisAmadorRoute
   '/cursos/motonauta': typeof CursosMotonautaRoute
@@ -65,7 +113,13 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/casas-flutuantes': typeof CasasFlutuantesRoute
+  '/contato': typeof ContatoRoute
+  '/conteudos': typeof ConteudosRoute
   '/cursos': typeof CursosRouteWithChildren
+  '/diferenciais': typeof DiferenciaisRoute
+  '/embarcacoes': typeof EmbarcacoesRoute
+  '/servicos': typeof ServicosRoute
   '/sobre': typeof SobreRoute
   '/cursos/arrais-amador': typeof CursosArraisAmadorRoute
   '/cursos/motonauta': typeof CursosMotonautaRoute
@@ -75,17 +129,40 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/casas-flutuantes'
+    | '/contato'
+    | '/conteudos'
     | '/cursos'
+    | '/diferenciais'
+    | '/embarcacoes'
+    | '/servicos'
     | '/sobre'
     | '/cursos/arrais-amador'
     | '/cursos/motonauta'
     | '/cursos/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/sobre' | '/cursos/arrais-amador' | '/cursos/motonauta' | '/cursos'
+  to:
+    | '/'
+    | '/casas-flutuantes'
+    | '/contato'
+    | '/conteudos'
+    | '/diferenciais'
+    | '/embarcacoes'
+    | '/servicos'
+    | '/sobre'
+    | '/cursos/arrais-amador'
+    | '/cursos/motonauta'
+    | '/cursos'
   id:
     | '__root__'
     | '/'
+    | '/casas-flutuantes'
+    | '/contato'
+    | '/conteudos'
     | '/cursos'
+    | '/diferenciais'
+    | '/embarcacoes'
+    | '/servicos'
     | '/sobre'
     | '/cursos/arrais-amador'
     | '/cursos/motonauta'
@@ -94,7 +171,13 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CasasFlutuantesRoute: typeof CasasFlutuantesRoute
+  ContatoRoute: typeof ContatoRoute
+  ConteudosRoute: typeof ConteudosRoute
   CursosRoute: typeof CursosRouteWithChildren
+  DiferenciaisRoute: typeof DiferenciaisRoute
+  EmbarcacoesRoute: typeof EmbarcacoesRoute
+  ServicosRoute: typeof ServicosRoute
   SobreRoute: typeof SobreRoute
 }
 
@@ -107,11 +190,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/casas-flutuantes': {
+      id: '/casas-flutuantes'
+      path: '/casas-flutuantes'
+      fullPath: '/casas-flutuantes'
+      preLoaderRoute: typeof CasasFlutuantesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contato': {
+      id: '/contato'
+      path: '/contato'
+      fullPath: '/contato'
+      preLoaderRoute: typeof ContatoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/conteudos': {
+      id: '/conteudos'
+      path: '/conteudos'
+      fullPath: '/conteudos'
+      preLoaderRoute: typeof ConteudosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cursos': {
       id: '/cursos'
       path: '/cursos'
       fullPath: '/cursos'
       preLoaderRoute: typeof CursosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diferenciais': {
+      id: '/diferenciais'
+      path: '/diferenciais'
+      fullPath: '/diferenciais'
+      preLoaderRoute: typeof DiferenciaisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/embarcacoes': {
+      id: '/embarcacoes'
+      path: '/embarcacoes'
+      fullPath: '/embarcacoes'
+      preLoaderRoute: typeof EmbarcacoesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/servicos': {
+      id: '/servicos'
+      path: '/servicos'
+      fullPath: '/servicos'
+      preLoaderRoute: typeof ServicosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sobre': {
@@ -162,7 +287,13 @@ const CursosRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CasasFlutuantesRoute: CasasFlutuantesRoute,
+  ContatoRoute: ContatoRoute,
+  ConteudosRoute: ConteudosRoute,
   CursosRoute: CursosRouteWithChildren,
+  DiferenciaisRoute: DiferenciaisRoute,
+  EmbarcacoesRoute: EmbarcacoesRoute,
+  ServicosRoute: ServicosRoute,
   SobreRoute: SobreRoute,
 }
 export const routeTree = rootRouteImport
