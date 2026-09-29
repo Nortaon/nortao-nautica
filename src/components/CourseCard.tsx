@@ -4,14 +4,22 @@ import { Check, Compass } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Course } from "@/config/siteConfig";
 
-export function CourseCard({ course, image }: { course: Course; image?: string }) {
+export function CourseCard({
+  course,
+  image,
+  ctaLabel = "Quero saber mais",
+}: {
+  course: Course;
+  image?: string;
+  ctaLabel?: string;
+}) {
   return (
     <article className="surface-panel group flex flex-col overflow-hidden rounded-2xl transition-transform duration-500 hover:-translate-y-1">
       <div className="relative aspect-[16/9] overflow-hidden bg-secondary">
         {image ? (
           <img
             src={image}
-            alt=""
+            alt={`Formação náutica para o curso ${course.title}`}
             loading="lazy"
             width={1280}
             height={720}
@@ -28,6 +36,17 @@ export function CourseCard({ course, image }: { course: Course; image?: string }
         <h3 className="font-display text-2xl text-foreground">{course.title}</h3>
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{course.description}</p>
 
+        <dl className="mt-5 space-y-3 border-t border-border pt-5 text-sm">
+          <div>
+            <dt className="font-semibold text-primary">Para quem é</dt>
+            <dd className="mt-1 leading-relaxed text-foreground/80">{course.audience}</dd>
+          </div>
+          <div>
+            <dt className="font-semibold text-primary">Objetivo</dt>
+            <dd className="mt-1 leading-relaxed text-foreground/80">{course.objective}</dd>
+          </div>
+        </dl>
+
         <ul className="mt-6 space-y-2.5">
           {course.benefits.map((benefit) => (
             <li key={benefit} className="flex items-start gap-2.5 text-sm text-foreground/85">
@@ -39,7 +58,7 @@ export function CourseCard({ course, image }: { course: Course; image?: string }
 
         <div className="mt-8 pt-2">
           <Button asChild variant="outlineGold" className="w-full sm:w-auto">
-            <Link to={course.to}>Ver o curso {course.shortTitle}</Link>
+            <Link to={course.to}>{ctaLabel}</Link>
           </Button>
         </div>
       </div>

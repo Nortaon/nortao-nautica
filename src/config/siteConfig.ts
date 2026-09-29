@@ -64,8 +64,13 @@ export type Course = {
   title: string;
   shortTitle: string;
   description: string;
+  audience: string;
+  objective: string;
   benefits: string[];
 };
+
+export const courseExamInfo =
+  "As provas dos cursos de formação são feitas junto à Capitania dos Portos de Santa Catarina.";
 
 export const courses: Course[] = [
   {
@@ -75,6 +80,8 @@ export const courses: Course[] = [
     shortTitle: "Arrais-Amador",
     description:
       "Habilitação para conduzir embarcações de esporte e recreio em águas interiores. Preparação completa, do conteúdo teórico à prova.",
+    audience: "Para quem quer conduzir embarcações de esporte e recreio em águas interiores.",
+    objective: "Preparar o aluno para avançar com segurança em sua formação náutica.",
     benefits: [
       "Aulas EAD com acesso flexível",
       "Apostila impressa",
@@ -89,11 +96,29 @@ export const courses: Course[] = [
     shortTitle: "Motonauta",
     description:
       "Habilitação para conduzir motos aquáticas com segurança, dentro das exigências da autoridade marítima.",
+    audience: "Para quem quer conduzir motos aquáticas com preparo e orientação.",
+    objective: "Oferecer uma preparação clara para a jornada de habilitação de Motonauta.",
     benefits: [
       "Conteúdo objetivo e direto ao ponto",
       "Material de apoio incluso",
       "Simulados para fixação",
       "Suporte durante todo o processo",
+    ],
+  },
+  {
+    slug: "mestre-amador",
+    to: "/cursos/mestre-amador",
+    title: "Mestre Amador",
+    shortTitle: "Mestre Amador",
+    description:
+      "Formação para quem deseja avançar na jornada náutica e ampliar sua preparação como condutor amador.",
+    audience: "Para quem já quer dar o próximo passo em sua formação náutica.",
+    objective: "Preparar o aluno para avançar com conteúdo organizado e orientação especializada.",
+    benefits: [
+      "Mais de 10 horas de videoaulas",
+      "Aulas EAD",
+      "Apostila impressa",
+      "Simulados online",
     ],
   },
 ];
@@ -167,6 +192,10 @@ export const differentials = [
     title: "Mais de 10 horas de videoaulas",
     description: "Conteúdo em vídeo cobrindo o programa do curso.",
   },
+  {
+    title: "Orientação especializada",
+    description: "Apoio profissional para entender cada etapa da sua jornada náutica.",
+  },
 ];
 
 export type Resource = {
@@ -202,20 +231,38 @@ export const faq = [
   {
     question: "Quais cursos a Nortão Náutica oferece?",
     answer:
-      "Atualmente oferecemos os cursos de Arrais-Amador e Motonauta, com material de apoio, simulados e aulas EAD.",
+      "A Nortão oferece formação para Motonauta, Arrais-Amador e Mestre Amador, com aulas EAD, videoaulas, apostila impressa, simulados online e recursos complementares.",
   },
   {
-    question: "Vocês cuidam da documentação da embarcação?",
+    question: "Qual a diferença entre Motonauta, Arrais-Amador e Mestre Amador?",
     answer:
-      "Sim. Conduzimos processos de regularização e documentação de embarcações, orientando o proprietário em cada etapa.",
+      "Motonauta é a formação voltada a quem deseja conduzir motos aquáticas. Arrais-Amador atende quem quer conduzir embarcações de esporte e recreio em águas interiores. Mestre Amador é o próximo passo para quem deseja avançar na formação náutica. Para entender qual opção corresponde ao seu objetivo, fale com a equipe.",
   },
   {
-    question: "Atendem quais cidades?",
-    answer: `Atendemos ${siteConfig.region}, com filial em ${siteConfig.locations[1].city}.`,
+    question: "Como funciona a preparação para as provas?",
+    answer: `${courseExamInfo} A preparação reúne aulas EAD, mais de 10 horas de videoaulas, apostila impressa, simulados online e recursos complementares.`,
   },
   {
-    question: "Como faço para tirar dúvidas ou começar?",
+    question: "As aulas são EAD?",
+    answer: "Sim. Os cursos contam com aulas EAD e acesso flexível ao conteúdo de estudo.",
+  },
+  {
+    question: "O que está incluído no material de estudo?",
     answer:
-      "O caminho mais rápido é o WhatsApp. Chame nossa equipe e explique seu caso — respondemos com as opções para você.",
+      "A preparação inclui mais de 10 horas de videoaulas, apostila impressa, simulados online e recursos complementares.",
+  },
+  {
+    question: "Vocês trabalham com regularização e renovação de documentação?",
+    answer:
+      "Sim. A Nortão atua com regularização, renovação e orientação documental para embarcações. Explique seu caso à equipe para receber a orientação adequada.",
+  },
+  {
+    question: "Vocês atendem Sinop-MT e região?",
+    answer: `Sim. Atendemos ${siteConfig.region}, com filial em ${siteConfig.locations[1].city}.`,
+  },
+  {
+    question: "Vocês trabalham com casas flutuantes?",
+    answer:
+      "Sim. A Nortão atua com projetos e regularização de casas flutuantes. Entre em contato para conversar sobre a sua ideia e entender os próximos passos.",
   },
 ];

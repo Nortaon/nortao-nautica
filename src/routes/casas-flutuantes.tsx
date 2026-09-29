@@ -19,6 +19,8 @@ export const Route = createFileRoute("/casas-flutuantes")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: CasasFlutuantesPage,
@@ -46,6 +48,7 @@ function CasasFlutuantesPage() {
         size="compact"
         eyebrow="Casas flutuantes"
         image={casaImage}
+        imageAlt="Casa flutuante sofisticada sobre águas calmas"
         title="Da ideia à sua casa flutuante"
         subtitle="Projetos, regularização e soluções para quem quer transformar a vontade de morar sobre a água em realidade."
       />

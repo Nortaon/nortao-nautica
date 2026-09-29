@@ -7,7 +7,7 @@ import { Hero } from "@/components/Hero";
 import { Section } from "@/components/Section";
 import { SectionTitle } from "@/components/SectionTitle";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
-import { courses, differentials, siteConfig } from "@/config/siteConfig";
+import { courseExamInfo, courses, differentials, siteConfig } from "@/config/siteConfig";
 
 const course = courses[1] ?? {
   slug: "motonauta",
@@ -15,6 +15,8 @@ const course = courses[1] ?? {
   title: "Motonauta",
   shortTitle: "Motonauta",
   description: "Habilitação para conduzir motos aquáticas com segurança.",
+  audience: "Para quem quer conduzir motos aquáticas.",
+  objective: "Preparação para a jornada de habilitação.",
   benefits: [],
 };
 const title = `Curso Motonauta — ${siteConfig.name}`;
@@ -27,6 +29,8 @@ export const Route = createFileRoute("/cursos/motonauta")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: MotonautaPage,
@@ -39,6 +43,7 @@ function MotonautaPage() {
         size="compact"
         eyebrow="Curso"
         image={cursoImage}
+        imageAlt="Jet ski navegando em rio ao entardecer"
         title="Motonauta"
         subtitle={course.description}
         actions={
@@ -66,6 +71,9 @@ function MotonautaPage() {
             ))}
           </ul>
         </div>
+        <p className="mt-10 border-l border-primary/50 pl-5 text-sm leading-relaxed text-muted-foreground">
+          {courseExamInfo}
+        </p>
       </Section>
 
       <Section tone="deep">

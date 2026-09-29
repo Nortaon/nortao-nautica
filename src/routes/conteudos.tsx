@@ -18,6 +18,8 @@ export const Route = createFileRoute("/conteudos")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: ConteudosPage,
@@ -30,6 +32,7 @@ function ConteudosPage() {
         size="compact"
         eyebrow="Conteúdos"
         image={cursoImage}
+        imageAlt="Lancha e jet ski usados na formação náutica"
         title="Materiais de apoio ao seu aprendizado"
         subtitle="Espaço reservado para videoaulas, apostilas, simulados e o ambiente EAD. Os acessos serão publicados aqui."
       />

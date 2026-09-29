@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import cursoImage from "@/assets/cursos-lancha-jetski.jpg";
+import cursoImage from "@/assets/hero-river.jpg";
 import { CTASection } from "@/components/CTASection";
 import { DifferentialCard } from "@/components/DifferentialCard";
 import { Hero } from "@/components/Hero";
@@ -9,20 +9,20 @@ import { SectionTitle } from "@/components/SectionTitle";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { courseExamInfo, courses, differentials, siteConfig } from "@/config/siteConfig";
 
-const course = courses[0] ?? {
-  slug: "arrais-amador",
-  to: "/cursos/arrais-amador",
-  title: "Arrais-Amador",
-  shortTitle: "Arrais-Amador",
-  description: "Habilitação para conduzir embarcações de esporte e recreio em águas interiores.",
-  audience: "Para quem quer conduzir embarcações em águas interiores.",
-  objective: "Preparação para a jornada de habilitação.",
+const course = courses.find((item) => item.slug === "mestre-amador") ?? {
+  slug: "mestre-amador",
+  to: "/cursos/mestre-amador",
+  title: "Mestre Amador",
+  shortTitle: "Mestre Amador",
+  description: "Formação para avançar na jornada náutica.",
+  audience: "Para quem quer avançar na formação náutica.",
+  objective: "Preparação para o próximo passo na jornada náutica.",
   benefits: [],
 };
-const title = `Curso Arrais-Amador — ${siteConfig.name}`;
-const description = course.description;
+const title = `Curso Mestre Amador — ${siteConfig.name}`;
+const description = `${course.description} Formação EAD com recursos de estudo e orientação da Nortão Náutica.`;
 
-export const Route = createFileRoute("/cursos/arrais-amador")({
+export const Route = createFileRoute("/cursos/mestre-amador")({
   head: () => ({
     meta: [
       { title },
@@ -33,25 +33,25 @@ export const Route = createFileRoute("/cursos/arrais-amador")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: ArraisPage,
+  component: MestreAmadorPage,
 });
 
-function ArraisPage() {
+function MestreAmadorPage() {
   return (
     <>
       <Hero
         size="compact"
         eyebrow="Curso"
         image={cursoImage}
-        imageAlt="Lancha e jet ski navegando em rio"
-        title="Arrais-Amador"
+        imageAlt="Embarcação navegando em rio amplo ao entardecer"
+        title="Mestre Amador"
         subtitle={course.description}
         actions={
           <WhatsAppButton
-            label="Quero me inscrever"
+            label="Quero saber mais"
             variant="hero"
             size="xl"
-            message="Olá! Tenho interesse no curso de Arrais-Amador."
+            message="Olá! Tenho interesse no curso de Mestre Amador."
           />
         }
       />
@@ -60,8 +60,8 @@ function ArraisPage() {
         <div className="grid gap-12 lg:grid-cols-2">
           <SectionTitle
             eyebrow="Para quem é"
-            title="Para quem quer conduzir embarcações de esporte e recreio"
-            description="Indicado a quem deseja navegar com a própria embarcação em águas interiores, com segurança e documentação em dia."
+            title="Para quem quer avançar na formação náutica"
+            description="Uma formação voltada a quem deseja seguir para o próximo passo da sua jornada como condutor amador."
           />
           <ul className="space-y-3 text-sm text-foreground/85">
             {course.benefits.map((benefit) => (
@@ -72,7 +72,8 @@ function ArraisPage() {
           </ul>
         </div>
         <p className="mt-10 border-l border-primary/50 pl-5 text-sm leading-relaxed text-muted-foreground">
-          {courseExamInfo}
+          {courseExamInfo} Para confirmar detalhes específicos da formação e da prova, fale com a
+          equipe da Nortão.
         </p>
       </Section>
 
@@ -86,9 +87,9 @@ function ArraisPage() {
       </Section>
 
       <CTASection
-        title="Comece pelo Arrais-Amador."
-        description="Fale com a nossa equipe e receba as orientações sobre turmas, material e prova."
-        message="Olá! Gostaria de informações sobre o curso de Arrais-Amador."
+        title="Avance na sua jornada náutica."
+        description="Fale com a equipe para conhecer a preparação do curso Mestre Amador."
+        message="Olá! Gostaria de informações sobre o curso de Mestre Amador."
       />
     </>
   );

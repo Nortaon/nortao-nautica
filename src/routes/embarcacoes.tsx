@@ -26,6 +26,8 @@ export const Route = createFileRoute("/embarcacoes")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: EmbarcacoesPage,
@@ -38,6 +40,7 @@ function EmbarcacoesPage() {
         size="compact"
         eyebrow="Embarcações"
         image={heroImage}
+        imageAlt="Embarcação navegando em rio amplo"
         title="Serviços para embarcações"
         subtitle={service.description}
       />
