@@ -18,13 +18,7 @@ export function SectionTitle({
   className,
 }: SectionTitleProps) {
   return (
-    <div
-      className={cn(
-        "max-w-2xl",
-        align === "center" && "mx-auto text-center",
-        className,
-      )}
-    >
+    <div className={cn("max-w-2xl", align === "center" && "mx-auto text-center", className)}>
       {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
       <Heading className="mt-3 text-3xl leading-tight text-foreground sm:text-4xl md:text-5xl">
         {title}
