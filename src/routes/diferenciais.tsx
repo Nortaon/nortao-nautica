@@ -18,6 +18,8 @@ export const Route = createFileRoute("/diferenciais")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: DiferenciaisPage,
@@ -30,6 +32,7 @@ function DiferenciaisPage() {
         size="compact"
         eyebrow="Diferenciais"
         image={heroImage}
+        imageAlt="Embarcação navegando ao entardecer"
         title="O que torna a experiência Nortão diferente"
         subtitle="Estrutura de apoio e atendimento próximo para que cada cliente conclua o que veio buscar."
       />

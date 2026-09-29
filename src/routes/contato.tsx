@@ -19,6 +19,8 @@ export const Route = createFileRoute("/contato")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: ContatoPage,
@@ -31,6 +33,7 @@ function ContatoPage() {
         size="compact"
         eyebrow="Contato"
         image={docsImage}
+        imageAlt="Documentação náutica organizada para atendimento"
         title="Fale com a Nortão Náutica"
         subtitle="O WhatsApp é o caminho mais rápido para tirar dúvidas sobre cursos, documentação e projetos náuticos."
         actions={<WhatsAppButton variant="hero" size="xl" />}

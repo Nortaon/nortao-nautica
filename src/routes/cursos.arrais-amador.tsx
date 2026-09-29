@@ -43,6 +43,7 @@ function ArraisPage() {
         size="compact"
         eyebrow="Curso"
         image={cursoImage}
+        imageAlt="Lancha e jet ski navegando em rio"
         title="Arrais-Amador"
         subtitle={course.description}
         actions={

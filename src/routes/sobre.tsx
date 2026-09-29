@@ -18,6 +18,8 @@ export const Route = createFileRoute("/sobre")({
       { name: "description", content: description },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: SobrePage,
@@ -30,6 +32,7 @@ function SobrePage() {
         size="compact"
         eyebrow="A Nortão"
         image={heroImage}
+        imageAlt="Embarcação navegando em rio ao entardecer"
         title="Uma náutica completa para o norte de Mato Grosso"
         subtitle={`A ${siteConfig.name} atua em ${siteConfig.region}, unindo formação, documentação e soluções náuticas em um único atendimento.`}
       />

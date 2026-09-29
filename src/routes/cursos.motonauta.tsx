@@ -43,6 +43,7 @@ function MotonautaPage() {
         size="compact"
         eyebrow="Curso"
         image={cursoImage}
+        imageAlt="Jet ski navegando em rio ao entardecer"
         title="Motonauta"
         subtitle={course.description}
         actions={

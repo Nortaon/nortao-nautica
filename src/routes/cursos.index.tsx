@@ -38,6 +38,7 @@ function CursosPage() {
         size="compact"
         eyebrow="Cursos"
         image={cursoImage}
+        imageAlt="Lancha e jet ski durante navegação em rio"
         title="Habilitação náutica com preparação de verdade"
         subtitle="Motonauta, Arrais-Amador e Mestre Amador para diferentes etapas da sua jornada, com recursos de estudo e orientação."
       />
