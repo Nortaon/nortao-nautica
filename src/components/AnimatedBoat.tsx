@@ -42,7 +42,7 @@ export function AnimatedBoat({
           "relative w-20 will-change-transform drop-shadow-[0_8px_18px_color-mix(in_oklab,var(--navy-deep)_70%,transparent)] sm:w-28 lg:w-36",
           !isHome && "ml-auto mr-3 sm:mr-8",
         )}
-        style={isHome && !reducedMotion ? { x: homeX, y: homeY, rotate: homeRotate } : undefined}
+        style={isHome && !reducedMotion ? { x: homeX, y: homeY, rotate: homeRotate } : {}}
         {...(!isHome && !reducedMotion
           ? {
               initial: { x: 34, y: 5, opacity: 0 },
@@ -57,7 +57,7 @@ export function AnimatedBoat({
       >
         <motion.div
           className="absolute top-[58%] right-[72%] w-20 sm:w-28 lg:w-40"
-          style={isHome && !reducedMotion ? { opacity: wakeOpacity } : undefined}
+          style={isHome && !reducedMotion ? { opacity: wakeOpacity } : {}}
         >
           <WakeTrail isStatic={reducedMotion} />
         </motion.div>
