@@ -10,33 +10,175 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CasasFlutuantesRouteImport } from './routes/casas-flutuantes'
+import { Route as ContatoRouteImport } from './routes/contato'
+import { Route as ConteudosRouteImport } from './routes/conteudos'
+import { Route as CursosRouteImport } from './routes/cursos'
+import { Route as DiferenciaisRouteImport } from './routes/diferenciais'
+import { Route as EmbarcacoesRouteImport } from './routes/embarcacoes'
+import { Route as ServicosRouteImport } from './routes/servicos'
+import { Route as SobreRouteImport } from './routes/sobre'
+import { Route as CursosIndexRouteImport } from './routes/cursos.index'
+import { Route as CursosArraisAmadorRouteImport } from './routes/cursos.arrais-amador'
+import { Route as CursosMotonautaRouteImport } from './routes/cursos.motonauta'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CasasFlutuantesRoute = CasasFlutuantesRouteImport.update({
+  id: '/casas-flutuantes',
+  path: '/casas-flutuantes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContatoRoute = ContatoRouteImport.update({
+  id: '/contato',
+  path: '/contato',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConteudosRoute = ConteudosRouteImport.update({
+  id: '/conteudos',
+  path: '/conteudos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CursosRoute = CursosRouteImport.update({
+  id: '/cursos',
+  path: '/cursos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiferenciaisRoute = DiferenciaisRouteImport.update({
+  id: '/diferenciais',
+  path: '/diferenciais',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmbarcacoesRoute = EmbarcacoesRouteImport.update({
+  id: '/embarcacoes',
+  path: '/embarcacoes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicosRoute = ServicosRouteImport.update({
+  id: '/servicos',
+  path: '/servicos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SobreRoute = SobreRouteImport.update({
+  id: '/sobre',
+  path: '/sobre',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CursosIndexRoute = CursosIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => CursosRoute,
+} as any)
+const CursosArraisAmadorRoute = CursosArraisAmadorRouteImport.update({
+  id: '/arrais-amador',
+  path: '/arrais-amador',
+  getParentRoute: () => CursosRoute,
+} as any)
+const CursosMotonautaRoute = CursosMotonautaRouteImport.update({
+  id: '/motonauta',
+  path: '/motonauta',
+  getParentRoute: () => CursosRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/casas-flutuantes': typeof CasasFlutuantesRoute
+  '/contato': typeof ContatoRoute
+  '/conteudos': typeof ConteudosRoute
+  '/cursos': typeof CursosRouteWithChildren
+  '/diferenciais': typeof DiferenciaisRoute
+  '/embarcacoes': typeof EmbarcacoesRoute
+  '/servicos': typeof ServicosRoute
+  '/sobre': typeof SobreRoute
+  '/cursos/arrais-amador': typeof CursosArraisAmadorRoute
+  '/cursos/motonauta': typeof CursosMotonautaRoute
+  '/cursos/': typeof CursosIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/casas-flutuantes': typeof CasasFlutuantesRoute
+  '/contato': typeof ContatoRoute
+  '/conteudos': typeof ConteudosRoute
+  '/diferenciais': typeof DiferenciaisRoute
+  '/embarcacoes': typeof EmbarcacoesRoute
+  '/servicos': typeof ServicosRoute
+  '/sobre': typeof SobreRoute
+  '/cursos/arrais-amador': typeof CursosArraisAmadorRoute
+  '/cursos/motonauta': typeof CursosMotonautaRoute
+  '/cursos': typeof CursosIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/casas-flutuantes': typeof CasasFlutuantesRoute
+  '/contato': typeof ContatoRoute
+  '/conteudos': typeof ConteudosRoute
+  '/cursos': typeof CursosRouteWithChildren
+  '/diferenciais': typeof DiferenciaisRoute
+  '/embarcacoes': typeof EmbarcacoesRoute
+  '/servicos': typeof ServicosRoute
+  '/sobre': typeof SobreRoute
+  '/cursos/arrais-amador': typeof CursosArraisAmadorRoute
+  '/cursos/motonauta': typeof CursosMotonautaRoute
+  '/cursos/': typeof CursosIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/casas-flutuantes'
+    | '/contato'
+    | '/conteudos'
+    | '/cursos'
+    | '/diferenciais'
+    | '/embarcacoes'
+    | '/servicos'
+    | '/sobre'
+    | '/cursos/arrais-amador'
+    | '/cursos/motonauta'
+    | '/cursos/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/casas-flutuantes'
+    | '/contato'
+    | '/conteudos'
+    | '/diferenciais'
+    | '/embarcacoes'
+    | '/servicos'
+    | '/sobre'
+    | '/cursos/arrais-amador'
+    | '/cursos/motonauta'
+    | '/cursos'
+  id:
+    | '__root__'
+    | '/'
+    | '/casas-flutuantes'
+    | '/contato'
+    | '/conteudos'
+    | '/cursos'
+    | '/diferenciais'
+    | '/embarcacoes'
+    | '/servicos'
+    | '/sobre'
+    | '/cursos/arrais-amador'
+    | '/cursos/motonauta'
+    | '/cursos/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CasasFlutuantesRoute: typeof CasasFlutuantesRoute
+  ContatoRoute: typeof ContatoRoute
+  ConteudosRoute: typeof ConteudosRoute
+  CursosRoute: typeof CursosRouteWithChildren
+  DiferenciaisRoute: typeof DiferenciaisRoute
+  EmbarcacoesRoute: typeof EmbarcacoesRoute
+  ServicosRoute: typeof ServicosRoute
+  SobreRoute: typeof SobreRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +190,111 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/casas-flutuantes': {
+      id: '/casas-flutuantes'
+      path: '/casas-flutuantes'
+      fullPath: '/casas-flutuantes'
+      preLoaderRoute: typeof CasasFlutuantesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contato': {
+      id: '/contato'
+      path: '/contato'
+      fullPath: '/contato'
+      preLoaderRoute: typeof ContatoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/conteudos': {
+      id: '/conteudos'
+      path: '/conteudos'
+      fullPath: '/conteudos'
+      preLoaderRoute: typeof ConteudosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cursos': {
+      id: '/cursos'
+      path: '/cursos'
+      fullPath: '/cursos'
+      preLoaderRoute: typeof CursosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diferenciais': {
+      id: '/diferenciais'
+      path: '/diferenciais'
+      fullPath: '/diferenciais'
+      preLoaderRoute: typeof DiferenciaisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/embarcacoes': {
+      id: '/embarcacoes'
+      path: '/embarcacoes'
+      fullPath: '/embarcacoes'
+      preLoaderRoute: typeof EmbarcacoesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/servicos': {
+      id: '/servicos'
+      path: '/servicos'
+      fullPath: '/servicos'
+      preLoaderRoute: typeof ServicosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sobre': {
+      id: '/sobre'
+      path: '/sobre'
+      fullPath: '/sobre'
+      preLoaderRoute: typeof SobreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cursos/': {
+      id: '/cursos/'
+      path: '/'
+      fullPath: '/cursos/'
+      preLoaderRoute: typeof CursosIndexRouteImport
+      parentRoute: typeof CursosRoute
+    }
+    '/cursos/arrais-amador': {
+      id: '/cursos/arrais-amador'
+      path: '/arrais-amador'
+      fullPath: '/cursos/arrais-amador'
+      preLoaderRoute: typeof CursosArraisAmadorRouteImport
+      parentRoute: typeof CursosRoute
+    }
+    '/cursos/motonauta': {
+      id: '/cursos/motonauta'
+      path: '/motonauta'
+      fullPath: '/cursos/motonauta'
+      preLoaderRoute: typeof CursosMotonautaRouteImport
+      parentRoute: typeof CursosRoute
+    }
   }
 }
 
+interface CursosRouteChildren {
+  CursosArraisAmadorRoute: typeof CursosArraisAmadorRoute
+  CursosMotonautaRoute: typeof CursosMotonautaRoute
+  CursosIndexRoute: typeof CursosIndexRoute
+}
+
+const CursosRouteChildren: CursosRouteChildren = {
+  CursosArraisAmadorRoute: CursosArraisAmadorRoute,
+  CursosMotonautaRoute: CursosMotonautaRoute,
+  CursosIndexRoute: CursosIndexRoute,
+}
+
+const CursosRouteWithChildren =
+  CursosRoute._addFileChildren(CursosRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CasasFlutuantesRoute: CasasFlutuantesRoute,
+  ContatoRoute: ContatoRoute,
+  ConteudosRoute: ConteudosRoute,
+  CursosRoute: CursosRouteWithChildren,
+  DiferenciaisRoute: DiferenciaisRoute,
+  EmbarcacoesRoute: EmbarcacoesRoute,
+  ServicosRoute: ServicosRoute,
+  SobreRoute: SobreRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
