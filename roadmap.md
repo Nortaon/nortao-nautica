@@ -1,8 +1,8 @@
 # Roadmap
 
-- [x] Criar a camada global NauticalJourney com comportamento por rota.
-- [x] Separar o visual do jet ski e a esteira da lógica de movimento.
-- [x] Adicionar transições suaves entre páginas sem interromper o Outlet.
-- [x] Otimizar animações para mobile e prefers-reduced-motion.
-- [x] Remover a instância duplicada da Home.
-- [x] Validar rotas, responsividade, build e lint.
+- [ ] Consolidar informações confirmadas e ampliar a oferta para Mestre Amador.
+- [ ] Reestruturar a Home na jornada comercial solicitada.
+- [ ] Ajustar cards e páginas dos três cursos.
+- [ ] Criar a rota `/cursos/mestre-amador` e revisar links/SEO.
+- [ ] Preservar e ajustar a animação náutica para a nova composição.
+- [ ] Validar rotas, CTAs, WhatsApp, mobile, movimento reduzido, lint e build.
