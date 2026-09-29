@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import cursoImage from "@/assets/curso-nautico.jpg";
+import cursoImage from "@/assets/jetski-rio.jpg";
 import { CTASection } from "@/components/CTASection";
 import { DifferentialCard } from "@/components/DifferentialCard";
 import { Hero } from "@/components/Hero";

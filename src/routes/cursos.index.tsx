@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import cursoImage from "@/assets/curso-nautico.jpg";
+import cursoImage from "@/assets/cursos-lancha-jetski.jpg";
+import jetskiImage from "@/assets/jetski-rio.jpg";
 import { CTASection } from "@/components/CTASection";
 import { CourseCard } from "@/components/CourseCard";
 import { DifferentialCard } from "@/components/DifferentialCard";
@@ -42,7 +43,7 @@ function CursosPage() {
             <CourseCard
               key={course.slug}
               course={course}
-              image={index === 0 ? cursoImage : undefined}
+              image={index === 0 ? cursoImage : jetskiImage}
             />
           ))}
         </div>
