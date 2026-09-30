@@ -33,6 +33,19 @@ const description =
   "Cursos de Motonauta, Arrais-Amador e Mestre Amador, regularização e documentação, serviços para embarcações e casas flutuantes em Sinop-MT e Colíder-MT.";
 
 const courseImages = [cursoImage, jetskiImage, heroImage];
+const featuredCourses = [
+  courses.find((course) => course.slug === "motonauta"),
+  courses.find((course) => course.slug === "arrais-amador"),
+  courses.find((course) => course.slug === "mestre-amador"),
+].filter((course): course is (typeof courses)[number] => Boolean(course));
+
+const courseImageBySlug = {
+  motonauta: jetskiImage,
+  "arrais-amador": cursoImage,
+  "mestre-amador": heroImage,
+} as const;
+
+const serviceImages = [docsImage, jetskiImage, casaImage, heroImage];
 
 const pathOptions = [
   {
@@ -102,10 +115,10 @@ function Index() {
   return (
     <div className="relative">
       <Hero
-        eyebrow={siteConfig.region}
+        eyebrow={siteConfig.name}
         image={heroImage}
         imageAlt="Embarcação navegando em rio amplo ao entardecer"
-        className="min-h-[calc(100svh-4rem)]"
+        className="min-h-[calc(100svh-5rem)] sm:min-h-[calc(100svh-5rem)]"
         title={
           <>
             DO DOCUMENTO À NAVEGAÇÃO.
@@ -135,24 +148,23 @@ function Index() {
         </div>
       </Hero>
 
-      <Section id="proximo-passo">
-        <SectionTitle
-          eyebrow="Comece por aqui"
-          title="Qual é o seu próximo passo?"
-          description="Escolha o caminho que mais se aproxima do que você precisa hoje."
-        />
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {pathOptions.map((option) => (
-            <JourneyPathCard key={option.title} {...option} />
-          ))}
-        </div>
-      </Section>
+      <div className="border-y border-border bg-navy-deep px-4 py-5 sm:px-6 lg:px-8">
+        <ul className="mx-auto grid max-w-7xl gap-4 text-sm text-foreground/75 sm:grid-cols-2 lg:grid-cols-4">
+          <li><strong className="block text-foreground">3 formações náuticas</strong>Motonauta, Arrais e Mestre Amador</li>
+          <li><strong className="block text-foreground">Preparação EAD</strong>Mais de 10h de videoaulas e simulados</li>
+          <li><strong className="block text-foreground">Atendimento regional</strong>Sinop-MT e região</li>
+          <li><strong className="block text-foreground">Presença em Colíder-MT</strong>Av. Tancredo Neves, 468</li>
+        </ul>
+      </div>
 
-      <Section tone="deep" className="overflow-hidden">
+      <Section tone="deep" className="overflow-hidden py-16 sm:py-24">
         <div className="grid items-center gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
-          <p className="font-display text-3xl leading-tight text-foreground sm:text-5xl">
-            A vontade de navegar começa antes de saber qual caminho seguir.
-          </p>
+          <div>
+            <span className="eyebrow">Antes de escolher uma solução</span>
+            <p className="mt-4 font-display text-3xl leading-tight text-foreground sm:text-5xl">
+              A vontade de navegar começa antes de saber qual caminho seguir.
+            </p>
+          </div>
           <div className="border-l border-primary/45 pl-6 sm:pl-9">
             <p className="text-lg leading-relaxed text-foreground/85">
               Talvez você queira começar a navegar, regularizar uma embarcação, resolver a
@@ -166,6 +178,19 @@ function Index() {
         </div>
       </Section>
 
+      <Section id="proximo-passo">
+        <SectionTitle
+          eyebrow="Encontre seu caminho"
+          title="Qual é o seu próximo passo?"
+          description="Escolha a situação que mais se aproxima do que você precisa hoje."
+        />
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {pathOptions.map((option) => (
+            <JourneyPathCard key={option.title} {...option} />
+          ))}
+        </div>
+      </Section>
+
       <Section id="cursos">
         <SectionTitle
           eyebrow="Formação náutica"
@@ -173,11 +198,11 @@ function Index() {
           description="Três formações para momentos diferentes da sua jornada, com preparação e recursos de estudo organizados."
         />
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {courses.map((course, index) => (
+          {featuredCourses.map((course) => (
             <CourseCard
               key={course.slug}
               course={course}
-              image={courseImages[index] ?? heroImage}
+              image={courseImageBySlug[course.slug as keyof typeof courseImageBySlug] ?? heroImage}
             />
           ))}
         </div>
@@ -191,19 +216,6 @@ function Index() {
           <div className="mt-7">
             <JourneySteps steps={formationSteps} compact />
           </div>
-        </div>
-      </Section>
-
-      <Section tone="deep" id="diferenciais">
-        <SectionTitle
-          eyebrow="Por que fazer com a Nortão?"
-          title="Preparação que valoriza a experiência do aluno"
-          description="Conteúdo organizado, recursos úteis e orientação para você compreender cada etapa."
-        />
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {differentials.map((item) => (
-            <DifferentialCard key={item.title} {...item} />
-          ))}
         </div>
       </Section>
 
@@ -254,8 +266,12 @@ function Index() {
           description="Suporte técnico, administrativo e orientação para proprietários, usando os serviços já oferecidos pela Nortão."
         />
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((service) => (
-            <ServiceCard key={service.slug} service={service} />
+          {services.map((service, index) => (
+            <ServiceCard
+              key={service.slug}
+              service={service}
+              image={serviceImages[index] ?? heroImage}
+            />
           ))}
         </div>
         <div className="mt-9">
@@ -278,7 +294,7 @@ function Index() {
             />
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <WhatsAppButton
-                label="Quero conversar sobre meu projeto"
+                label="Falar sobre minha casa flutuante"
                 variant="hero"
                 size="lg"
                 message="Olá! Quero conversar sobre um projeto de casa flutuante."
@@ -297,6 +313,25 @@ function Index() {
             className="aspect-[4/3] w-full rounded-xl border border-border object-cover shadow-[var(--shadow-elegant)]"
           />
         </div>
+      </Section>
+
+      <Section tone="deep" id="diferenciais">
+        <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16">
+          <SectionTitle
+            eyebrow="Por que fazer com a Nortão?"
+            title="Preparação e orientação para cada etapa"
+            description="Conteúdo organizado, recursos úteis e atendimento focado na experiência de quem está começando ou avançando."
+          />
+          <div className="grid gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2">
+            {differentials.map((item) => (
+              <DifferentialCard key={item.title} {...item} />
+            ))}
+          </div>
+        </div>
+        <p className="mt-10 max-w-3xl border-l border-primary/50 pl-5 text-sm leading-relaxed text-foreground/75">
+          {courseExamInfo} A Nortão atende Sinop-MT e região e mantém filial na Av. Tancredo
+          Neves, 468, em Colíder-MT.
+        </p>
       </Section>
 
       <Section tone="deep">
@@ -348,11 +383,11 @@ function Index() {
             <div className="p-7 sm:p-12">
               <span className="eyebrow">Seu próximo passo</span>
               <h2 className="mt-4 max-w-2xl font-display text-3xl leading-tight text-foreground sm:text-5xl">
-                Conte onde você está. A Nortão ajuda a orientar o caminho.
+                Do documento à navegação. Da ideia à sua casa flutuante.
               </h2>
               <p className="mt-5 max-w-xl leading-relaxed text-muted-foreground">
-                Cursos, documentação, embarcações ou casas flutuantes: comece com uma conversa
-                direta sobre o que você precisa.
+                Conte onde você está. A Nortão ajuda a orientar o caminho entre cursos,
+                documentação, serviços para embarcações e casas flutuantes.
               </p>
               <div className="mt-8">
                 <WhatsAppButton

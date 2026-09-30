@@ -14,7 +14,7 @@ export function NauticalJourney() {
         journeyKey={pathname}
         className={
           isHome
-            ? "top-[52%] hidden -translate-y-1/2 opacity-70 md:block"
+            ? "top-[56%] hidden -translate-y-1/2 opacity-55 md:block lg:opacity-65"
             : "top-28 opacity-45 sm:top-32 sm:opacity-55"
         }
       />
