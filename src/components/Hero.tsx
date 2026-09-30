@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { motion } from "motion/react";
 
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import { cn } from "@/lib/utils";
 
 type HeroProps = {
@@ -26,11 +27,13 @@ export function Hero({
   children,
   className,
 }: HeroProps) {
+  const reducedMotion = usePrefersReducedMotion();
+
   return (
     <section
       className={cn(
         "relative isolate overflow-hidden",
-        size === "full" ? "min-h-[86vh]" : "min-h-[46vh]",
+        size === "full" ? "min-h-[78svh] sm:min-h-[82vh]" : "min-h-[46vh]",
         className,
       )}
     >
@@ -48,20 +51,24 @@ export function Hero({
       <div
         className={cn(
           "mx-auto flex max-w-7xl flex-col justify-end px-4 sm:px-6 lg:px-8",
-          size === "full" ? "min-h-[86vh] pt-24 pb-24" : "min-h-[46vh] pt-16 pb-14",
+          size === "full"
+            ? "min-h-[78svh] pt-20 pb-14 sm:min-h-[82vh] sm:pt-24 sm:pb-20"
+            : "min-h-[46vh] pt-16 pb-14",
         )}
       >
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={reducedMotion ? false : { opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={reducedMotion ? { duration: 0 } : { duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-3xl"
         >
           {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
           <h1
             className={cn(
               "mt-4 font-display leading-[1.05] text-foreground",
-              size === "full" ? "text-4xl sm:text-6xl lg:text-7xl" : "text-3xl sm:text-5xl",
+              size === "full"
+                ? "text-[2.45rem] sm:text-6xl lg:text-7xl"
+                : "text-3xl sm:text-5xl",
             )}
           >
             {title}
@@ -71,7 +78,7 @@ export function Hero({
               {subtitle}
             </p>
           ) : null}
-          {actions ? <div className="mt-9 flex flex-wrap gap-3">{actions}</div> : null}
+          {actions ? <div className="mt-8 flex flex-wrap gap-3 sm:mt-9">{actions}</div> : null}
           {children}
         </motion.div>
       </div>
