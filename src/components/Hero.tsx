@@ -66,9 +66,7 @@ export function Hero({
           <h1
             className={cn(
               "mt-4 font-display leading-[1.05] text-foreground",
-              size === "full"
-                ? "text-[2.45rem] sm:text-6xl lg:text-7xl"
-                : "text-3xl sm:text-5xl",
+              size === "full" ? "text-[2.45rem] sm:text-6xl lg:text-7xl" : "text-3xl sm:text-5xl",
             )}
           >
             {title}

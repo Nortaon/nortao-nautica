@@ -150,10 +150,21 @@ function Index() {
 
       <div className="border-y border-border bg-navy-deep px-4 py-5 sm:px-6 lg:px-8">
         <ul className="mx-auto grid max-w-7xl gap-4 text-sm text-foreground/75 sm:grid-cols-2 lg:grid-cols-4">
-          <li><strong className="block text-foreground">3 formações náuticas</strong>Motonauta, Arrais e Mestre Amador</li>
-          <li><strong className="block text-foreground">Preparação EAD</strong>Mais de 10h de videoaulas e simulados</li>
-          <li><strong className="block text-foreground">Atendimento regional</strong>Sinop-MT e região</li>
-          <li><strong className="block text-foreground">Presença em Colíder-MT</strong>Av. Tancredo Neves, 468</li>
+          <li>
+            <strong className="block text-foreground">3 formações náuticas</strong>Motonauta, Arrais
+            e Mestre Amador
+          </li>
+          <li>
+            <strong className="block text-foreground">Preparação EAD</strong>Mais de 10h de
+            videoaulas e simulados
+          </li>
+          <li>
+            <strong className="block text-foreground">Atendimento regional</strong>Sinop-MT e região
+          </li>
+          <li>
+            <strong className="block text-foreground">Presença em Colíder-MT</strong>Av. Tancredo
+            Neves, 468
+          </li>
         </ul>
       </div>
 
@@ -329,8 +340,8 @@ function Index() {
           </div>
         </div>
         <p className="mt-10 max-w-3xl border-l border-primary/50 pl-5 text-sm leading-relaxed text-foreground/75">
-          {courseExamInfo} A Nortão atende Sinop-MT e região e mantém filial na Av. Tancredo
-          Neves, 468, em Colíder-MT.
+          {courseExamInfo} A Nortão atende Sinop-MT e região e mantém filial na Av. Tancredo Neves,
+          468, em Colíder-MT.
         </p>
       </Section>
 
