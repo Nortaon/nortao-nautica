@@ -45,7 +45,7 @@ export function WhatsAppFloating() {
       className={cn(
         "fixed right-4 bottom-4 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full",
         "bg-whatsapp text-whatsapp-foreground shadow-[var(--shadow-elegant)]",
-        "transition-transform duration-300 hover:scale-105 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
+        "transition-transform duration-300 hover:scale-105 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none active:scale-95",
       )}
     >
       <MessageCircle className="h-6 w-6" aria-hidden="true" />

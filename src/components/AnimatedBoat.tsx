@@ -23,10 +23,10 @@ export function AnimatedBoat({
 }: AnimatedBoatProps) {
   const reducedMotion = usePrefersReducedMotion();
   const { scrollYProgress } = useScroll();
-  const progress = useSpring(scrollYProgress, { stiffness: 58, damping: 25, mass: 0.65 });
+  const progress = useSpring(scrollYProgress, { stiffness: 48, damping: 28, mass: 0.75 });
   const homeX = useTransform(progress, [0, 1], ["-8rem", "calc(100vw - 4rem)"]);
-  const homeY = useTransform(progress, [0, 0.25, 0.5, 0.75, 1], [0, -8, 4, -6, 0]);
-  const homeRotate = useTransform(progress, [0, 0.25, 0.5, 0.75, 1], [-1.5, 1.2, -1, 1.4, -0.6]);
+  const homeY = useTransform(progress, [0, 0.25, 0.5, 0.75, 1], [0, -6, 3, -5, 0]);
+  const homeRotate = useTransform(progress, [0, 0.25, 0.5, 0.75, 1], [-1, 0.8, -0.7, 1, -0.4]);
   const wakeOpacity = useTransform(progress, [0, 0.08, 1], [0.18, 0.58, 0.72]);
   const isHome = mode === "home";
 

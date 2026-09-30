@@ -101,9 +101,9 @@
   --whatsapp-foreground: oklch(0.14 0.03 255);
 
   --gradient-hero: linear-gradient(
-    180deg,
-    color-mix(in oklab, var(--navy-deep) 55%, transparent) 0%,
-    color-mix(in oklab, var(--navy-deep) 80%, transparent) 45%,
+    135deg,
+    color-mix(in oklab, var(--navy-deep) 52%, transparent) 0%,
+    color-mix(in oklab, var(--navy-deep) 76%, transparent) 48%,
     var(--navy-deep) 100%
   );
   --gradient-gold: linear-gradient(100deg, var(--gold) 0%, var(--gold-soft) 50%, var(--gold) 100%);
@@ -156,7 +156,7 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.01em;
+    letter-spacing: 0;
   }
 
   ::selection {

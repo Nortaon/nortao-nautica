@@ -53,7 +53,7 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-border/70 bg-background/90 shadow-[0_10px_30px_color-mix(in_oklab,var(--navy-deep)_42%,transparent)] backdrop-blur-md">
       <nav
         aria-label="Navegação principal"
         className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8"
@@ -67,7 +67,7 @@ export function Navbar() {
                 to={link.to}
                 activeOptions={{ exact: link.to === "/" }}
                 activeProps={{ className: "text-primary" }}
-                className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary/55 hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
               >
                 {link.label}
               </Link>
