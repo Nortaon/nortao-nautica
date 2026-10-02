@@ -18,6 +18,8 @@ import { Route as DiferenciaisRouteImport } from './routes/diferenciais'
 import { Route as EmbarcacoesRouteImport } from './routes/embarcacoes'
 import { Route as ServicosRouteImport } from './routes/servicos'
 import { Route as SobreRouteImport } from './routes/sobre'
+import { Route as ApiHealthRouteImport } from './routes/api.health'
+import { Route as ApiLeadsRouteImport } from './routes/api.leads'
 import { Route as CursosIndexRouteImport } from './routes/cursos.index'
 import { Route as CursosArraisAmadorRouteImport } from './routes/cursos.arrais-amador'
 import { Route as CursosMestreAmadorRouteImport } from './routes/cursos.mestre-amador'
@@ -68,6 +70,16 @@ const SobreRoute = SobreRouteImport.update({
   path: '/sobre',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiHealthRoute = ApiHealthRouteImport.update({
+  id: '/api/health',
+  path: '/api/health',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiLeadsRoute = ApiLeadsRouteImport.update({
+  id: '/api/leads',
+  path: '/api/leads',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CursosIndexRoute = CursosIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -99,6 +111,8 @@ export interface FileRoutesByFullPath {
   '/embarcacoes': typeof EmbarcacoesRoute
   '/servicos': typeof ServicosRoute
   '/sobre': typeof SobreRoute
+  '/api/health': typeof ApiHealthRoute
+  '/api/leads': typeof ApiLeadsRoute
   '/cursos/arrais-amador': typeof CursosArraisAmadorRoute
   '/cursos/mestre-amador': typeof CursosMestreAmadorRoute
   '/cursos/motonauta': typeof CursosMotonautaRoute
@@ -113,6 +127,8 @@ export interface FileRoutesByTo {
   '/embarcacoes': typeof EmbarcacoesRoute
   '/servicos': typeof ServicosRoute
   '/sobre': typeof SobreRoute
+  '/api/health': typeof ApiHealthRoute
+  '/api/leads': typeof ApiLeadsRoute
   '/cursos/arrais-amador': typeof CursosArraisAmadorRoute
   '/cursos/mestre-amador': typeof CursosMestreAmadorRoute
   '/cursos/motonauta': typeof CursosMotonautaRoute
@@ -129,6 +145,8 @@ export interface FileRoutesById {
   '/embarcacoes': typeof EmbarcacoesRoute
   '/servicos': typeof ServicosRoute
   '/sobre': typeof SobreRoute
+  '/api/health': typeof ApiHealthRoute
+  '/api/leads': typeof ApiLeadsRoute
   '/cursos/arrais-amador': typeof CursosArraisAmadorRoute
   '/cursos/mestre-amador': typeof CursosMestreAmadorRoute
   '/cursos/motonauta': typeof CursosMotonautaRoute
@@ -146,6 +164,8 @@ export interface FileRouteTypes {
     | '/embarcacoes'
     | '/servicos'
     | '/sobre'
+    | '/api/health'
+    | '/api/leads'
     | '/cursos/arrais-amador'
     | '/cursos/mestre-amador'
     | '/cursos/motonauta'
@@ -160,6 +180,8 @@ export interface FileRouteTypes {
     | '/embarcacoes'
     | '/servicos'
     | '/sobre'
+    | '/api/health'
+    | '/api/leads'
     | '/cursos/arrais-amador'
     | '/cursos/mestre-amador'
     | '/cursos/motonauta'
@@ -175,6 +197,8 @@ export interface FileRouteTypes {
     | '/embarcacoes'
     | '/servicos'
     | '/sobre'
+    | '/api/health'
+    | '/api/leads'
     | '/cursos/arrais-amador'
     | '/cursos/mestre-amador'
     | '/cursos/motonauta'
@@ -191,6 +215,8 @@ export interface RootRouteChildren {
   EmbarcacoesRoute: typeof EmbarcacoesRoute
   ServicosRoute: typeof ServicosRoute
   SobreRoute: typeof SobreRoute
+  ApiHealthRoute: typeof ApiHealthRoute
+  ApiLeadsRoute: typeof ApiLeadsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -258,6 +284,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SobreRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/health': {
+      id: '/api/health'
+      path: '/api/health'
+      fullPath: '/api/health'
+      preLoaderRoute: typeof ApiHealthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/leads': {
+      id: '/api/leads'
+      path: '/api/leads'
+      fullPath: '/api/leads'
+      preLoaderRoute: typeof ApiLeadsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/cursos/': {
       id: '/cursos/'
       path: '/'
@@ -316,6 +356,8 @@ const rootRouteChildren: RootRouteChildren = {
   EmbarcacoesRoute: EmbarcacoesRoute,
   ServicosRoute: ServicosRoute,
   SobreRoute: SobreRoute,
+  ApiHealthRoute: ApiHealthRoute,
+  ApiLeadsRoute: ApiLeadsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

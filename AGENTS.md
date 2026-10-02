@@ -12,3 +12,4 @@
 <!-- LOVABLE:END -->
 
 - Keep the global nautical motion controller independent from its vehicle visual so SVG can be replaced by optimized imagery without rewriting motion logic.
+- Keep public APIs in TanStack file routes so all deployments share the existing server entry.
