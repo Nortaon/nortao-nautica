@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Mail, Phone } from "lucide-react";
 
 import docsImage from "@/assets/documentacao.jpg";
+import { ContactLeadForm } from "@/components/ContactLeadForm";
 import { Hero } from "@/components/Hero";
 import { LocationCard } from "@/components/LocationCard";
 import { Section } from "@/components/Section";
@@ -38,6 +39,13 @@ function ContatoPage() {
         subtitle="O WhatsApp é o caminho mais rápido para tirar dúvidas sobre cursos, documentação e projetos náuticos."
         actions={<WhatsAppButton variant="hero" size="xl" />}
       />
+
+      <Section className="pb-0">
+        <div className="mx-auto max-w-3xl">
+          <SectionTitle eyebrow="Envie sua solicitação" title="Conte o que você precisa" description="Preencha seus dados para iniciar o atendimento da Nortão Náutica." />
+          <div className="mt-8"><ContactLeadForm /></div>
+        </div>
+      </Section>
 
       <Section>
         <div className="grid gap-12 lg:grid-cols-2">
